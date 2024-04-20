@@ -14,28 +14,25 @@ const posts = (await getCollection("blog")).sort(
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <Header />
   <section class="pt-11">
-    <h1 class="font-[700] text-[28px]">Blog</h1>
+    <h1 class="header_primary">Blog</h1>
     <p class="text-xl mt-1">
-      Non-dev posts. Check the <a href="/blog/tags" class="text-link underline"
-        >Tags</a
-      > page to find something specific.
+      Non-dev posts. Check the <a href="/blog/tags" class="link">Tags</a> page to
+      find something specific.
     </p>
   </section>
   <section class="pt-11">
-    <h2 class="font-[700] text-[28px]">Recent Posts</h2>
+    <h2 class="header_primary">Recent Posts</h2>
     <ul class="space-y-9 mt-2">
       {
         posts.map((post) => (
-          <li>
-            <a href={`/blog/${post.slug}/`} class="space-y-1">
-              <h3 class="text-link underline font-normal text-[20px]">
-                {post.data.title}
-              </h3>
-              <p>{post.data.description}</p>
-              <p class="date text-gray">
-                <FormattedDate date={post.data.pubDate} />
-              </p>
+          <li class="space-y-1">
+            <a href={`/blog/${post.slug}/`} class="link">
+              <h3>{post.data.title}</h3>
             </a>
+            <p>{post.data.description}</p>
+            <p class="date text-gray">
+              <FormattedDate date={post.data.pubDate} />
+            </p>
           </li>
         ))
       }
@@ -44,15 +41,15 @@ const posts = (await getCollection("blog")).sort(
   <section class="mt-11">
     <div class="flex justify-center">
       <!-- pagination -->
-      <div class="flex justify-center space-x-[10px] text-[20px]">
-        <a href="/blog?page=1" class="text-link underline">1</a>
-        <a href="/blog?page=2" class="text-link underline">2</a>
-        <a href="/blog?page=3" class="text-link underline">3</a>
-        <a href="/blog?page=4" class="text-link underline">4</a>
-        <a href="/blog?page=5" class="text-link underline">5</a>
-        <span>...</span>
+      <div class="flex justify-center space-x-[10px]">
+        <a href="/blog?page=1" class="link">1</a>
+        <a href="/blog?page=2" class="link">2</a>
+        <a href="/blog?page=3" class="link">3</a>
+        <a href="/blog?page=4" class="link">4</a>
+        <a href="/blog?page=5" class="link">5</a>
+        <span class="text-[20px]">...</span>
 
-        <a href="/blog?page=1" class="text-link underline">
+        <a href="/blog?page=1" class="link">
           <!-- {posts.length} -->
           121
         </a>

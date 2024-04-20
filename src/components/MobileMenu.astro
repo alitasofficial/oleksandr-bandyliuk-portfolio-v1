@@ -1,18 +1,61 @@
-<div class="drawer">
-  <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+---
+import { MENU_ITEMS, SITE_TITLE } from "@/consts";
+---
+
+<div class="drawer drawer-end">
+  <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content">
     <!-- Page content here -->
-    <label for="my-drawer" class="btn btn-primary drawer-button"
-      >Open drawer</label
-    >
+    <label for="my-drawer-4" class="drawer-button cursor-pointer">
+      <svg
+        width="44"
+        height="44"
+        viewBox="0 0 24 24"
+        class="ml-auto"
+        xmlns="http://www.w3.org/2000/svg"
+        ><path fill="currentColor" d="M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z"
+        ></path></svg
+      >
+    </label>
   </div>
   <div class="drawer-side">
-    <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"
+    <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"
     ></label>
-    <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+    <div class="p-4 w-full min-h-full bg-white text-base-content">
+      <div class="flex justify-between">
+        <h1 class="header_logo">
+          <a href="/">{SITE_TITLE}</a>
+        </h1>
+        <label
+          for="my-drawer-4"
+          aria-label="close sidebar"
+          class="text-[20px] mt-1 shrink-0 w-1/6 p-2 cursor-pointer"
+        >
+          <svg
+            width="30"
+            height="30"
+            class="ml-auto"
+            viewBox="0 0 256 256"
+            xmlns="http://www.w3.org/2000/svg"
+            ><path
+              fill="currentColor"
+              d="M208.49 191.51a12 12 0 0 1-17 17L128 145l-63.51 63.49a12 12 0 0 1-17-17L111 128L47.51 64.49a12 12 0 0 1 17-17L128 111l63.51-63.52a12 12 0 0 1 17 17L145 128Z"
+            ></path></svg
+          >
+        </label>
+      </div>
       <!-- Sidebar content here -->
-      <li><a>Sidebar Item 1</a></li>
-      <li><a>Sidebar Item 2</a></li>
-    </ul>
+      <!-- <li><a>Sidebar Item 1</a></li>
+      <li><a>Sidebar Item 2</a></li> -->
+      {
+        MENU_ITEMS.map((item) => (
+          <li class="list-none">
+            <a href={item.link} class="link leading-7">
+              {item.title}
+            </a>
+          </li>
+        ))
+      }
+    </div>
   </div>
 </div>
