@@ -13,9 +13,9 @@ const { imgSrc, link = "#", title, desc, platforms } = Astro.props;
 ---
 
 <div class="grid md:grid-cols-2 items-center gap-4">
-  <div class="flex items-center gap-4">
+  <div class="flex items-center">
     <!-- Card Image -->
-    <div class="bg-gray-300 h-[60px] w-[60px] rounded-full shrink-0">
+    <div class="bg-gray-300 h-[60px] w-[60px] mr-4 rounded-full shrink-0">
       <Image
         class="rounded-full"
         src={imgSrc}
@@ -40,7 +40,7 @@ const { imgSrc, link = "#", title, desc, platforms } = Astro.props;
 
   <!-- Platform -->
   <div class="hidden md:block pl-4">
-    <p class="font-normal text-xl text-gray-400 text-right">
+    <p class="font-normal text-xl text-text-secondary-color text-right">
       {platforms}
     </p>
   </div>
