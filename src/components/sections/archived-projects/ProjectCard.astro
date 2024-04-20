@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  period: string;
+  link: string;
+}
+
+const { title, period, link } = Astro.props;
+---
+
+<li class="flex items-center justify-between min-h-[27px]">
+  <a href={link} class="flex-1">
+    <h4 class="link">
+      {title}
+    </h4>
+  </a>
+  <p
+    class="font-normal text-[20px] flex-1 text-end leading-7 text-gray-400 hidden md:block"
+  >
+    {period}
+  </p>
+</li>

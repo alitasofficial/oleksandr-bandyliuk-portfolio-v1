@@ -1,0 +1,28 @@
+---
+import { SELECTED_ARTICLES_SETTINGS } from "@/consts";
+import { getCollection } from "astro:content";
+import PostCard from "./PostCard.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+---
+
+<section id="archived-projects" class="mt-11">
+  <div class="py-[6px]">
+    <h3 class="text-[28px] font-[700] leading-8">
+      {SELECTED_ARTICLES_SETTINGS.title}
+    </h3>
+  </div>
+  <ul class="mt-2 grid gap-9 grid-cols-1 md:grid-cols-2">
+    {
+      posts.map((post) => (
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          link={`/blog/${post.slug}/`}
+        />
+      ))
+    }
+  </ul>
+</section>

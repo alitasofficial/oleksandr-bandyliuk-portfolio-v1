@@ -1,0 +1,52 @@
+---
+interface Props {
+  country: Country;
+}
+
+interface Country {
+  name: string;
+  cities: City[];
+}
+
+interface City {
+  name: string;
+  link: string;
+}
+
+const { country } = Astro.props;
+---
+
+<li class="flex flex-col gap-1">
+  <h4 class="font-semibold text-[20px] leading-7">
+    {country.name}
+  </h4>
+
+  <div class="flex items-center justify-between">
+    <ul class="flex flex-wrap">
+      {
+        country.cities.map((city, index) => (
+          <Fragment>
+            <li>
+              {city.link ? (
+                <a href={city.link} class="link">
+                  {city.name}
+                </a>
+              ) : (
+                <span class="text-[20px]">{city.name}</span>
+              )}
+            </li>
+            {index !== country.cities.length - 1 && (
+              <span class="mr-1 text-[20px]">,</span>
+            )}
+          </Fragment>
+        ))
+      }
+    </ul>
+
+    <div class="border-t border-dashed flex-1 min-w-24 hidden md:block"></div>
+
+    <div class="hidden md:block">
+      {country.cities.length}
+    </div>
+  </div>
+</li>

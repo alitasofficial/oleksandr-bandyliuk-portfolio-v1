@@ -1,0 +1,69 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+import { getCollection } from "astro:content";
+import { SITE_TITLE, SITE_DESCRIPTION, TAGS } from "@/consts";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+
+const groupedTagsByFirstLetter = TAGS.tags.reduce((acc, tag) => {
+  const firstLetter = tag.name[0].toUpperCase();
+  if (!acc[firstLetter]) {
+    acc[firstLetter] = [];
+  }
+  acc[firstLetter].push(tag);
+  return acc;
+}, {});
+---
+
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <Header />
+  <section class="pt-11">
+    <h1 class="font-[700] text-[28px]">Tags</h1>
+
+    <div class="text-[20px] mt-1">
+      <p>The areas of interest I express and discuss.</p>
+    </div>
+  </section>
+
+  <section class="pt-11">
+    <h2 class="font-[700] text-[28px]">Pinned</h2>
+    <ul class="flex flex-wrap gap-1 mt-2 text-[20px]">
+      {
+        TAGS.pinned.map((tag, index) => (
+          <li class="flex">
+            <a href={tag.link} class="link">
+              #{tag.name}
+            </a>
+            {index < TAGS.pinned.length - 1 && ","}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  {
+    groupedTagsByFirstLetter &&
+      Object.keys(groupedTagsByFirstLetter).map((letter) => (
+        <section class="pt-11">
+          <h2 class="font-[700] text-[28px]">{letter}</h2>
+          <ul class="flex flex-wrap gap-1 mt-2 text-[20px]">
+            {groupedTagsByFirstLetter[letter].map((tag, index) => (
+              <li class="flex">
+                <a href={tag.link} class="link">
+                  #{tag.name}
+                </a>
+                {index < groupedTagsByFirstLetter[letter].length - 1 && ","}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+  }
+
+  <Footer />
+</Layout>

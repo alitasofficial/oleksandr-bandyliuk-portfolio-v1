@@ -1,0 +1,21 @@
+---
+import MediaCard from "./MediaCard.astro";
+import { MEDIA_SETTINGS } from "@/consts";
+---
+
+<section id="media-mentions" class="mt-11">
+  <div>
+    <h3 class="font-[700] text-[28px] leading-8">{MEDIA_SETTINGS.title}</h3>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-[18px] mt-2">
+    {
+      MEDIA_SETTINGS.cards.map((card) => (
+        <MediaCard
+          title={card.title}
+          subtitle={card.subtitle}
+          link={card.link}
+        />
+      ))
+    }
+  </div>
+</section>
