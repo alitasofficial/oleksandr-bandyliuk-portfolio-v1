@@ -1,0 +1,75 @@
+---
+const { length, currentPage, firstUrl } = Astro.props;
+const totalPages = length;
+const paginationList: any[] = [];
+
+const visiblePages = 5; // Number of visible page numbers
+
+// Function to insert dots
+function insertDots(arr) {
+  const result: any[] = [];
+  for (let i = 0; i < arr.length; i++) {
+    result.push(arr[i]);
+    if (arr[i + 1] - arr[i] > 1) {
+      result.push("...");
+    }
+  }
+  return result;
+}
+
+// Generate pagination list
+if (totalPages <= visiblePages) {
+  // If total pages are less than or equal to visible pages, show all pages
+  for (let i = 1; i <= totalPages; i++) {
+    paginationList.push(i);
+  }
+} else {
+  // Otherwise, show a range of pages with dots
+  let start = Math.max(1, currentPage - Math.floor(visiblePages / 2));
+  let end = Math.min(totalPages, start + visiblePages - 1);
+
+  if (end - start < visiblePages - 1) {
+    start = Math.max(1, end - visiblePages + 1);
+  }
+
+  for (let i = start; i <= end; i++) {
+    paginationList.push(i);
+  }
+
+  if (start > 1) {
+    if (start > 2) {
+      paginationList.unshift("...");
+    }
+    paginationList.unshift(1);
+  }
+  if (end < totalPages) {
+    if (end < totalPages - 1) {
+      paginationList.push("...");
+    }
+    paginationList.push(totalPages);
+  }
+}
+---
+
+<section class="mt-11">
+  <div class="flex justify-center">
+    <nav aria-label="Blog pages" class="flex">
+      {
+        paginationList.map((item, index) => (
+          <>
+            {item === "..." ? (
+              <span class="dots mx-1 text-[20px]">...</span>
+            ) : (
+              <a
+                href={`${firstUrl}${item == 1 ? "" : "/" + item}`}
+                class={`block mx-1 ${currentPage == item ? "text-link-pressed-color text-[20px]" : "link"}`}
+              >
+                {item}
+              </a>
+            )}
+          </>
+        ))
+      }
+    </nav>
+  </div>
+</section>

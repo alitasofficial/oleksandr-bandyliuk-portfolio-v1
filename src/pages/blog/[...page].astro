@@ -1,0 +1,71 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+import { getCollection } from "astro:content";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
+import Pagination from "@/components/Pagination.astro";
+import { postcss } from "tailwindcss";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = (await getCollection("blog")).sort(
+    (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+  );
+
+  return paginate(posts, {
+    pageSize: 1,
+  });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const pathname = new URL(Astro.request.url).pathname.split("/");
+const firstPath = pathname[1];
+---
+
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <Header />
+  <div class="flex-1">
+    <section class="pt-11">
+      <h1 class="header_primary">Blog</h1>
+      <p class="text-xl mt-1">
+        Non-dev posts. Check the <a href="/blog/tags" class="link">Tags</a> page
+        to find something specific.
+      </p>
+    </section>
+    <section class="pt-11">
+      <h2 class="header_primary">Recent Posts</h2>
+      <ul class="space-y-9 mt-2">
+        {
+          page.data.map((post) => (
+            <li class="space-y-1">
+              <a href={`/blog/${post.slug}/`} class="link">
+                <h3>{post.data.title}</h3>
+              </a>
+              <p>{post.data.description}</p>
+              <p class="date text-gray">
+                <FormattedDate date={post.data.pubDate} />
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+
+  {
+    page.total > 5 ? (
+      <Pagination
+        length={page.lastPage}
+        currentPage={page.currentPage}
+        firstUrl={`/${firstPath}`}
+        currentUrl={page.url.current}
+        prevUrl={page.url.prev}
+        nextUrl={page.url.next}
+        lastUrl={`/${firstPath}/${page.lastPage}`}
+      />
+    ) : null
+  }
+  <Footer />
+</Layout>

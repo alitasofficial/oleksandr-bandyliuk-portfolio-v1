@@ -1,11 +1,11 @@
 ---
+import "@/styles/globals.css";
+import { FAVICON } from "@/consts";
 interface Props {
   title: string;
   description: string;
   image?: string;
 }
-
-import "@/styles/globals.css";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image = "/og-image.jpg" } = Astro.props;
@@ -17,7 +17,7 @@ const { title, description, image = "/og-image.jpg" } = Astro.props;
     <!-- Global Metadata -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={FAVICON} />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Font preloads -->

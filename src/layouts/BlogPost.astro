@@ -36,14 +36,62 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
               }
             </div>
           </div>
-          <div
-            class="prose prose-img:drop-shadow-md prose-img:rounded-sm max-w-full w-full mt-1 prose-p:text-black"
-          >
+          <div class="prose max-w-full w-full mt-1 prose-p:text-black">
             <slot />
           </div>
         </div>
       </article>
     </main>
     <Footer />
+
+    <style is:global>
+      .copy-code {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+        line-height: 1rem;
+      }
+    </style>
+
+    <script>
+      let copyButtonLabel = "Copy Code";
+      let codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+      for (let codeBlock of codeBlocks) {
+        let wrapper = document.createElement("div");
+        wrapper.style.position = "relative";
+
+        let copyButton = document.createElement("button");
+        copyButton.className =
+          "copy-code bg-text-secondary-color rounded-tr-md hover:bg-separator-color hover:text-text-main-color";
+        copyButton.innerHTML = copyButtonLabel;
+
+        codeBlock.setAttribute("tabindex", "0");
+        codeBlock.appendChild(copyButton);
+        // wrap codebock with relative parent element
+        codeBlock.parentNode?.insertBefore(wrapper, codeBlock);
+        wrapper.appendChild(codeBlock);
+
+        copyButton.addEventListener("click", async () => {
+          await copyCode(codeBlock, copyButton);
+        });
+      }
+
+      async function copyCode(block, button) {
+        let code = block.querySelector("code");
+        let text = code.innerText;
+
+        await navigator.clipboard.writeText(text);
+
+        // visual feedback that task is completed
+        button.innerText = "Code Copied";
+
+        setTimeout(() => {
+          button.innerText = copyButtonLabel;
+        }, 700);
+      }
+    </script>
   </body>
 </html>

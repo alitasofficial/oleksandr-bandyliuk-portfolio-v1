@@ -8,7 +8,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, TAGS } from "@/consts";
 
 export function getStaticPaths() {
   const tags = TAGS.tags.map((tag) => {
-    return { params: { tag: tag.name.toLowerCase() } };
+    return { params: { tag: tag.name } };
   });
   return [{ params: { tag: "all" } }, ...tags];
 }
@@ -29,45 +29,30 @@ const posts = (await getCollection("blog"))
 
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <Header />
-  <section class="pt-11">
-    <h1 class="font-[700] text-[28px]">Tag: {tag === "all" ? "All" : tag}</h1>
-
-    <div class="text-[20px] mt-1">
-      <p>
-        Articles about software development, design, management, and related
-        subjects.
-      </p>
-      <p class="mt-4">
-        Curated collection of top-tier articles showcased on the <a
-          href="/favorites"
-          class="link">Favorites</a
-        > page.
-      </p>
-      <p class="mt-4">
-        Check the <a href="/tags" class="link">Tags</a> page to find something specific.
-      </p>
-    </div>
-  </section>
-  <section class="pt-11">
-    <h2 class="font-[700] text-[28px]">Recent Posts</h2>
-    <ul class="space-y-9 mt-2">
-      {
-        posts.map((post) => (
-          <li>
-            <a href={`/blog/${post.slug}/`} class="space-y-1">
-              <h3 class="text-link underline font-normal text-[20px]">
-                {post.data.title}
-              </h3>
-              <p>{post.data.description}</p>
-              <p class="date text-gray">
-                <FormattedDate date={post.data.pubDate} />
-              </p>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+  <div class="flex-1">
+    <section class="pt-11">
+      <h1 class="font-[700] text-[28px]">Tag: {tag === "all" ? "All" : tag}</h1>
+    </section>
+    <section class="">
+      <ul class="space-y-9 mt-2">
+        {
+          posts.map((post) => (
+            <li>
+              <a href={`/blog/${post.slug}/`} class="space-y-1">
+                <h3 class="text-link underline font-normal text-[20px]">
+                  {post.data.title}
+                </h3>
+                <p>{post.data.description}</p>
+                <p class="date text-gray">
+                  <FormattedDate date={post.data.pubDate} />
+                </p>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
   <section class="mt-11">
     <div class="flex justify-center">
       <!-- pagination -->

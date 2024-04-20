@@ -31,15 +31,6 @@ import HeaderLink from "./HeaderLink.astro";
       <ul
         class="md:flex md:flex-wrap gap-x-4 hidden md:justify-end items-center font-semibold text-xl col-span-1"
       >
-        <!-- <li>
-          <HeaderLink href="/work">Work</HeaderLink>
-        </li>
-        <li>
-          <HeaderLink href="/dev">Dev</HeaderLink>
-        </li>
-        <li>
-          <HeaderLink href="/blog">Blog</HeaderLink>
-        </li> -->
         {
           MENU_ITEMS.map((item) => (
             <li>
@@ -50,7 +41,7 @@ import HeaderLink from "./HeaderLink.astro";
       </ul>
 
       <div class="md:hidden w-1/5 shrink-0">
-        <MobileMenu client:load />
+        <MobileMenu />
       </div>
     </nav>
   </div>

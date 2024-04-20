@@ -54,6 +54,10 @@ The blockquote element represents content that is quoted from another source, op
 > **Note** that you can use _Markdown syntax_ within a blockquote.
 ```
 
+```javascript
+let hello = 'world'
+```
+
 #### Output
 
 > Tiam, ad mint andaepu dandae nostion secatur sequo quae.  
