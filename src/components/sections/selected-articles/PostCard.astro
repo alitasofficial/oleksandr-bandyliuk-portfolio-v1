@@ -8,11 +8,11 @@ interface Props {
 const { title, description, link } = Astro.props;
 ---
 
-<li class="flex flex-col gap-2">
-  <a href={link} class="link">
-    <h4>
+<li class="flex flex-col gap-1">
+  <h4>
+    <a href={link} class="link">
       {title}
-    </h4>
-  </a>
+    </a>
+  </h4>
   <p class="font-normal text-[20px] leading-7">{description}</p>
 </li>
