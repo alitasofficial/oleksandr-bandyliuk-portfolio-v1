@@ -3,7 +3,7 @@ import lookup from "./assets/images/lookup.png";
 import slack from "./assets/images/slack.png";
 import spotify from "./assets/images/spotify.png";
 
-export const SITE_TITLE = "Alexander Constantine Bartholomew";
+export const SITE_TITLE = "Alex Smith";
 export const SITE_DESCRIPTION =
   "Alex Smith is a web developer and designer based in the UK. He specialises in building websites and web applications using modern web technologies.";
 
