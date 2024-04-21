@@ -54,9 +54,6 @@ const params = Astro.params;
 
 const pathname = new URL(Astro.request.url).pathname.split("/");
 const firstPath = pathname[1] + "/" + pathname[2];
-
-console.log(params);
-console.log(page);
 ---
 
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
