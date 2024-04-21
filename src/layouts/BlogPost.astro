@@ -22,23 +22,24 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
     </div>
     <main class="container max-w-[62rem] px-4 mx-auto">
       <article class="max-w-full w-full pt-11">
-        <div class="">
-          <div>
-            <h1 class="font-[700] text-3xl">{title}</h1>
-            <div class="mt-1 text-gray">
-              <FormattedDate date={pubDate} />
-              {
-                updatedDate && (
-                  <div class="last-updated-on">
-                    Last updated on <FormattedDate date={updatedDate} />
-                  </div>
-                )
-              }
-            </div>
+        <div>
+          <h1 class="header_primary">{title}</h1>
+          <div class="mt-1 text-gray">
+            <FormattedDate date={pubDate} />
+            {
+              updatedDate && (
+                <div class="last-updated-on">
+                  Last updated on <FormattedDate date={updatedDate} />
+                </div>
+              )
+            }
           </div>
-          <div class="prose max-w-full w-full mt-1 prose-p:text-black">
-            <slot />
-          </div>
+        </div>
+
+        <div
+          class="prose max-w-full w-full mt-1 prose-p:text prose-headings:header_primary prose-img:my-5 prose-p:mb-5"
+        >
+          <slot />
         </div>
       </article>
     </main>

@@ -30,19 +30,19 @@
   }
 
   .text {
-    @apply text-[20px] font-sans font-normal text-text-main-color;
+    @apply text-xl font-sans font-normal text-text-main-color;
     line-height: 27.24px;
   }
   .text_secondary {
-    @apply text-[20px] font-sans font-normal text-text-main-color;
+    @apply text-xl font-sans font-normal text-text-main-color;
     line-height: 27.24px;
   }
   .menu_link_primary {
-    @apply text-[20px] font-sans font-semibold text-text-main-color;
+    @apply text-xl font-sans font-semibold text-text-main-color;
     line-height: 27.24px;
   }
   .menu_link_primary_pressed {
-    @apply text-[20px] font-sans font-semibold text-text-main-color;
+    @apply text-xl font-sans font-semibold text-text-main-color;
     line-height: 27.24px;
   }
   .header_primary {
@@ -54,7 +54,7 @@
     line-height: 38.13px;
   }
   .header_tertiary {
-    @apply text-[20px] font-sans font-semibold text-text-main-color;
+    @apply text-xl font-sans font-semibold text-text-main-color;
     line-height: 27.24px;
   }
   .header_logo {
@@ -66,6 +66,6 @@
     line-height: 174.31px;
   }
   .link {
-    @apply text-link visited:text-link-visited-color hover:text-link-hover-color active:text-link-pressed-color underline text-[20px];
+    @apply text-link visited:text-link-visited-color hover:text-link-hover-color active:text-link-pressed-color underline text-xl;
   }
 }

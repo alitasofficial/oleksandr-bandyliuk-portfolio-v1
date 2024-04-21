@@ -23,20 +23,20 @@ const groupedTagsByFirstLetter = TAGS.tags.reduce((acc, tag) => {
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <Header />
   <section class="pt-11">
-    <h1 class="font-[700] text-[28px]">Tags</h1>
+    <h1 class="header_primary">Tags</h1>
 
-    <div class="text-[20px] mt-1">
+    <div class="text mt-1">
       <p>The areas of interest I express and discuss.</p>
     </div>
   </section>
 
   <section class="pt-11">
-    <h2 class="font-[700] text-[28px]">Pinned</h2>
-    <ul class="flex flex-wrap gap-1 mt-2 text-[20px]">
+    <h2 class="header_primary">Pinned</h2>
+    <ul class="flex flex-wrap gap-1 mt-[9px] text-[20px]">
       {
         TAGS.pinned.map((tag, index) => (
           <li class="flex">
-            <a href={tag.link} class="link">
+            <a href={`/tags/${tag.name}`} class="link">
               #{tag.name}
             </a>
             {index < TAGS.pinned.length - 1 && ","}
@@ -46,24 +46,25 @@ const groupedTagsByFirstLetter = TAGS.tags.reduce((acc, tag) => {
     </ul>
   </section>
 
-  {
-    groupedTagsByFirstLetter &&
-      Object.keys(groupedTagsByFirstLetter).map((letter) => (
-        <section class="pt-11">
-          <h2 class="font-[700] text-[28px]">{letter}</h2>
-          <ul class="flex flex-wrap gap-1 mt-2 text-[20px]">
-            {groupedTagsByFirstLetter[letter].map((tag, index) => (
-              <li class="flex">
-                <a href={tag.link} class="link">
-                  #{tag.name}
-                </a>
-                {index < groupedTagsByFirstLetter[letter].length - 1 && ","}
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))
-  }
-
+  <section>
+    {
+      groupedTagsByFirstLetter &&
+        Object.keys(groupedTagsByFirstLetter).map((letter) => (
+          <div class="pt-11">
+            <h2 class="header_primary">{letter}</h2>
+            <ul class="flex flex-wrap gap-1 mt-2 text-[20px]">
+              {groupedTagsByFirstLetter[letter].map((tag, index) => (
+                <li class="flex">
+                  <a href={`/tags/${tag.name}`} class="link">
+                    #{tag.name}
+                  </a>
+                  {index < groupedTagsByFirstLetter[letter].length - 1 && ","}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+    }
+  </section>
   <Footer />
 </Layout>

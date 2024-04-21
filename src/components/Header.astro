@@ -10,16 +10,14 @@ import HeaderLink from "./HeaderLink.astro";
       class="min-h-16 flex justify-between md:items-center md:grid md:grid-cols-2"
     >
       <div class="col-span-1">
-        <h2 class="header_logo">
+        <h1 class="header_logo">
           <a href="/">{SITE_TITLE}</a>
-        </h2>
+        </h1>
         <ul class="font-normal text-xl flex items-center flex-wrap">
-          <!-- <a href="#" class="underline text-link">Instagram</a>
-          <a href="#" class="underline text-link">Twitter</a> -->
           {
             SOCIAL_LINKS.map((link) => (
               <li class="list-none mr-[10px]">
-                <a href={link.link} class="underline text-link">
+                <a href={link.link} class="link">
                   {link.title}
                 </a>
               </li>

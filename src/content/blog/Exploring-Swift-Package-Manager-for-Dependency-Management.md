@@ -3,6 +3,7 @@ title: "Exploring Swift Package Manager for Dependency Management"
 description: "Swift Package Manager (SPM) simplifies the process of managing dependencies and building Swift packages for projects"
 pubDate: 'Jul 14 2021'
 heroImage: '/blog-placeholder-1.jpg'
+tags: ["Swiftui", "Node.js"]
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.

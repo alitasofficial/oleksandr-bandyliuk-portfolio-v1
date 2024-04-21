@@ -3,6 +3,7 @@ title: "Mastering Combine: Reactive Programming in Swift"
 description: "Combine framework introduced reactive programming paradigms to Swift, enabling developers to handle asynchronous events and data streams with ease"
 pubDate: 'Jul 13 2021'
 heroImage: '/blog-placeholder-1.jpg'
+tags: ["Node.js"]
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.

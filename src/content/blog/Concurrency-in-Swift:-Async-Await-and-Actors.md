@@ -3,6 +3,7 @@ title: "Concurrency in Swift: Async/Await and Actors"
 description: "Concurrency is a crucial aspect of modern app development, enabling applications to perform multiple tasks concurrently for improved responsiveness and efficiency"
 pubDate: 'Jul 15 2021'
 heroImage: '/blog-placeholder-1.jpg'
+tags: ["Swiftui", "Node.js"]
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.

@@ -27,15 +27,28 @@ const firstPath = pathname[1];
   <Header />
   <div class="flex-1">
     <section class="pt-11">
-      <h1 class="header_primary">Blog</h1>
-      <p class="text mt-1">
-        Non-dev posts. Check the <a href="/tags" class="link">Tags</a> page to find
-        something specific.
-      </p>
+      <h1 class="header_primary">Dev</h1>
+
+      <div class="text mt-1">
+        <p>
+          Articles about software development, design, management, and related
+          subjects.
+        </p>
+        <p class="mt-4">
+          Curated collection of top-tier articles showcased on the <a
+            href="/favorites"
+            class="link">Favorites</a
+          > page.
+        </p>
+        <p class="mt-4">
+          Check the <a href="/tags" class="link">Tags</a> page to find something
+          specific.
+        </p>
+      </div>
     </section>
 
     <section class="pt-11">
-      <h2 class="header_primary">Recent Posts</h2>
+      <h2 class="header_primary">Recent Articles</h2>
       <ul class="space-y-9 mt-2">
         {
           page.data.map((post) => (

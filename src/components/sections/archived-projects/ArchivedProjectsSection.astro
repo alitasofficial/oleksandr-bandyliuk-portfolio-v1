@@ -5,14 +5,14 @@ import { ARCHIVED_SETTINGS } from "@/consts";
 
 <section id="archived-projects" class="mt-11">
   <div class="flex justify-between py-[6px]">
-    <h3 class="font-[700] text-[28px] leading-8">
+    <h3 class="header_primary">
       {ARCHIVED_SETTINGS.title}
     </h3>
-    <h3 class="font-normal text-[28px] leading-8 hidden md:block">
+    <h4 class="header_secondary hidden md:block">
       {ARCHIVED_SETTINGS.subtitle}
-    </h3>
+    </h4>
   </div>
-  <ul class="flex flex-col mt-2 gap-1 md:divide-y">
+  <ul class="flex flex-col mt-2 gap-1 md:divide-y md:divide-separator-color">
     {
       ARCHIVED_SETTINGS.cards.map((card) => (
         <ProjectCard title={card.title} period={card.period} link={card.link} />

@@ -13,31 +13,32 @@ const posts = (await getCollection("blog")).sort(
 
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <Header />
-  <section class="pt-11">
-    <h1 class="font-[700] text-[28px]">Favorite Articles</h1>
+  <div class="flex-1">
+    <section class="pt-11">
+      <h1 class="header_primary">Favorite Articles</h1>
 
-    <div class="text-[20px] mt-1">
-      <p>Curated collection of top-tier articles</p>
-    </div>
-  </section>
+      <div class="text mt-1">
+        <p>Curated collection of top-tier articles</p>
+      </div>
+    </section>
 
-  {
-    FAVORITE_ARTICLES.map((articles) => (
-      <section class="pt-11">
-        <h2 class="font-[700] text-[28px]">{articles.title}</h2>
+    {
+      FAVORITE_ARTICLES.map((articles) => (
+        <section class="pt-11">
+          <h2 class="header_primary">{articles.title}</h2>
 
-        <ul class="text-[20px] mt-1">
-          {articles.articles.map((article) => (
-            <li>
-              <a href={article.link} class="link">
-                {article.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    ))
-  }
-
+          <ul class="text mt-1">
+            {articles.articles.map((article) => (
+              <li>
+                <a href={article.link} class="link">
+                  {article.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
   <Footer />
 </Layout>

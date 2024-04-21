@@ -1,0 +1,105 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+import { getCollection } from "astro:content";
+import { SITE_TITLE, SITE_DESCRIPTION, TAGS } from "@/consts";
+import type { GetStaticPaths } from "astro";
+import Pagination from "@/components/Pagination.astro";
+
+// export function getStaticPaths() {
+//   const tags = TAGS.tags.map((tag) => {
+//     return { params: { tag: tag.name } };
+//   });
+//   return [{ params: { tag: "all" } }, ...tags];
+// }
+
+// const { tag } = Astro.params;
+
+// const posts = (await getCollection("blog"))
+//   .filter((post) => {
+//     if (post.data.tags) {
+//       if (tag === "all") {
+//         return true;
+//       }
+//       return post.data.tags.includes(tag.toLowerCase());
+//     }
+//   })
+//   .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+
+export async function getStaticPaths({ paginate }) {
+  const allTags = TAGS.tags.map((tag) => {
+    return tag.name;
+  });
+
+  const allPosts = (await getCollection("blog")).sort(
+    (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+  );
+  // For every tag, return a paginate() result.
+  // Make sure that you pass `{params: {tag}}` to `paginate()`
+  // so that Astro knows which tag grouping the result is for.
+  return allTags.flatMap((tag) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.data.tags?.includes(tag)
+    );
+    return paginate(filteredPosts, {
+      params: { tag },
+      pageSize: 1,
+    });
+  });
+}
+const { page } = Astro.props;
+const params = Astro.params;
+
+const pathname = new URL(Astro.request.url).pathname.split("/");
+const firstPath = pathname[1] + "/" + pathname[2];
+
+console.log(params);
+console.log(page);
+---
+
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <Header />
+  <div class="flex-1">
+    <section class="pt-11">
+      <h1 class="header_primary">
+        Tag: {params.tag === "all" ? "All" : params.tag}
+      </h1>
+    </section>
+    <section class="">
+      <ul class="space-y-9 mt-2">
+        {
+          page.data.map((post) => (
+            <li class="space-y-1">
+              <a href={`/blog/${post.slug}/`} class="space-y-1">
+                <h2 class="link">{post.data.title}</h2>
+              </a>
+              <p class="text">{post.data.description}</p>
+              <p class="date text-text-secondary-color text">
+                <FormattedDate date={post.data.pubDate} />
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+
+  <section class="mt-11">
+    {
+      page.total > 2 ? (
+        <Pagination
+          length={page.lastPage}
+          currentPage={page.currentPage}
+          firstUrl={`/${firstPath}`}
+          currentUrl={page.url.current}
+          prevUrl={page.url.prev}
+          nextUrl={page.url.next}
+          lastUrl={`/${firstPath}/${page.lastPage}`}
+        />
+      ) : null
+    }
+  </section>
+  <Footer />
+</Layout>

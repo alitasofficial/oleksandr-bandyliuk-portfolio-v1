@@ -3,7 +3,7 @@ title: "Building SwiftUI Apps: A Comprehensive Guide"
 description: "SwiftUI revolutionized the way developers create user interfaces for iOS, macOS, watchOS, and tvOS applications"
 pubDate: 'Jul 12 2021'
 heroImage: '/blog-placeholder-1.jpg'
-tags: ["swiftui", "Node.js"]
+tags: ["Swiftui", "Node.js"]
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
