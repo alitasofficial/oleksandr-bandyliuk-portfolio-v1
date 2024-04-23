@@ -6,6 +6,8 @@ import spotify from "./assets/images/spotify.png";
 export const SITE_TITLE = "Alexander Constantine Bartholomew";
 export const SITE_DESCRIPTION =
   "Alex Smith is a web developer and designer based in the UK. He specialises in building websites and web applications using modern web technologies.";
+export const SITE_URL = "https://bandyliuk.com/";
+export const SITE_AUTHOR = "Alex Smith";
 export const FAVICON = "/favicon.svg";
 
 export const MENU_ITEMS = [
@@ -292,10 +294,6 @@ export const DAILY_SETTINGS = {
     },
   ],
 };
-
-// =========================================================
-// Tags
-// =========================================================
 
 export const TAGS = {
   pinned: [

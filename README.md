@@ -1,20 +1,7 @@
-# Astro Starter Kit: Blog
-
-```sh
-npm create astro@latest -- --template blog
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+# Oleksandr Bandyliuk Portfolio Project
 
 Features:
 
-- ✅ Minimal styling (make it your own!)
 - ✅ 100/100 Lighthouse performance
 - ✅ SEO-friendly with canonical URLs and OpenGraph data
 - ✅ Sitemap support
@@ -23,7 +10,7 @@ Features:
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+Inside of this project, you'll see the following folders and files:
 
 ```text
 ├── public/
@@ -46,23 +33,65 @@ The `src/content/` directory contains "collections" of related Markdown and MDX 
 
 Any static assets, like images, can be placed in the `public/` directory.
 
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Command        | Action                                       |
+| :------------- | :------------------------------------------- |
+| `pnpm install` | Installs dependencies                        |
+| `pnpm dev`     | Starts local dev server at `localhost:4321`  |
+| `pnpm build`   | Build your production site to `./dist/`      |
+| `pnpm preview` | Preview your build locally, before deploying |
 
-## 👀 Want to learn more?
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Project Constants
 
-## Credit
+The `src/constants.ts` file contains website constants of related pages or components.
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+```text
+SITE_TITLE - Website title
+SITE_DESCRIPTION - Website description
+SITE_URL - Website URL
+SITE_AUTHOR - Website author
+FAVICON - Website favicon
+MENU_ITEMS - Website menu items
+SOCIAL_LINKS - Website social links
+INTRO_SETTINGS - Intro section settings
+THINGS_SETTINGS - Things section settings
+MEDIA_SETTINGS - Media section settings
+ARCHIVED_SETTINGS - Archived section settings
+SELECTED_ARTICLES_SETTINGS - Selected articles section settings
+VISITED_COUNTRIES_SETTINGS - Visited countries section settings
+FAVORITES_SETTINGS - Favorites section settings
+DAILY_SETTINGS - Daily section settings
+TAGS - Tags (The tags can also be fecthed from the frontmatter of the markdown file)
+FAVORITE_ARTICLES - Favorite articles
+```
+
+## How to add new blog post
+
+To add a new blog post, you need to create a new markdown or mdx file in the `src/content/blog/` directory with relevant frontmatter.
+
+Here is a sample of the frontmatter:
+** Tags are case sensitive
+
+```markdown
+---
+title: "Title of the blog post"
+description: "Description of the blog post"
+pubDate: "2022-01-01"
+heroImage: "image.jpg"
+tags: ["Tag1", "tag2"]
+---
+```
+
+## SEO
+
+The SEO component is located in the `src/layouts/Layout.astro` file. The component is used in the layout files to set the SEO meta tags.
+
+## Assets
+
+The assets are located in the `public/` or `src/assets` directory. You can add images, fonts, or any other static files in this directory.
+
+All image files are optimized using the `sharp` package for better performance.
