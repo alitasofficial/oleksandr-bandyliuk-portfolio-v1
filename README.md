@@ -47,7 +47,7 @@ All commands are run from the root of the project, from a terminal:
 
 ## Project Constants
 
-The `src/constants.ts` file contains website constants of related pages or components.
+The `src/consts.ts` file contains website constants of related pages or components.
 
 ```text
 SITE_TITLE - Website title
