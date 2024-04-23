@@ -45,15 +45,17 @@ import { MENU_ITEMS, SITE_TITLE } from "@/consts";
         </label>
       </div>
       <!-- Sidebar content here -->
-      {
-        MENU_ITEMS.map((item) => (
-          <li class="list-none">
-            <a href={item.link} class="link leading-7">
-              {item.title}
-            </a>
-          </li>
-        ))
-      }
+      <ul>
+        {
+          MENU_ITEMS.map((item) => (
+            <li class="list-none">
+              <a href={item.link} class="link leading-7">
+                {item.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </div>
 </div>

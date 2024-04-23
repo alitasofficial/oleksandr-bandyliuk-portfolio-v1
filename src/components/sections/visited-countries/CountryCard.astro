@@ -16,7 +16,7 @@ interface City {
 const { country } = Astro.props;
 ---
 
-<li class="flex flex-col gap-1">
+<div class="flex flex-col gap-1">
   <h4 class="header_tertiary">
     {country.name}
   </h4>
@@ -25,8 +25,8 @@ const { country } = Astro.props;
     <ul class="flex flex-wrap">
       {
         country.cities.map((city, index) => (
-          <Fragment>
-            <li>
+          <li>
+            <span>
               {city.link ? (
                 <a href={city.link} class="link">
                   {city.name}
@@ -34,11 +34,11 @@ const { country } = Astro.props;
               ) : (
                 <span class="text-[20px]">{city.name}</span>
               )}
-            </li>
+            </span>
             {index !== country.cities.length - 1 && (
               <span class="mr-1 text-[20px]">,</span>
             )}
-          </Fragment>
+          </li>
         ))
       }
     </ul>
@@ -49,4 +49,4 @@ const { country } = Astro.props;
       {country.cities.length}
     </div>
   </div>
-</li>
+</div>
