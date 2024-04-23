@@ -49,6 +49,8 @@ All commands are run from the root of the project, from a terminal:
 
 The `src/consts.ts` file contains website constants of related pages or components.
 
+**For Astro to generate robots.txt and sitemap files, you need to set the site url in the `astro.config.mjs` file.**
+
 ```text
 SITE_TITLE - Website title
 SITE_DESCRIPTION - Website description
