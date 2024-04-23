@@ -29,6 +29,15 @@ const { title, description, image = "/og-image.png" } = Astro.props;
     />
     <meta name="theme-color" content="#ffffff" />
 
+    <!-- Font Preload -->
+    <link
+      rel="preload"
+      href="/fonts/OpenSans.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
 
