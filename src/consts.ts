@@ -17,20 +17,12 @@ export const MENU_ITEMS = [
   { title: "Products", link: "/products" },
   { title: "Resume", link: "/resume" },
   { title: "Podcast", link: "/podcast" },
-  // { title: "Press", link: "/podcast" },
-  // { title: "Bookshelf", link: "/podcast" },
 ];
 export const SOCIAL_LINKS = [
   { title: "Facebook", link: "" },
   { title: "Instagram", link: "" },
   { title: "Whatsapp", link: "" },
   { title: "Snapchat", link: "" },
-  // { title: "Twitter", link: "https://twitter.com/alexsmith" },
-  // { title: "TikTok", link: "" },
-  // { title: "Pinterest", link: "" },
-  // { title: "Reddit", link: "" },
-  // { title: "Flickr", link: "" },
-  // { title: "Quora", link: "" },
 ];
 
 export const INTRO_SETTINGS = {
